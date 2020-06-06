@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.dadosService.obterDados().subscribe(
       dados => {
-        this.dados = dados;
+        this.dados = dados.dados2;
         this.init();
       });
   }
@@ -76,12 +76,64 @@ export class DashboardComponent implements OnInit {
     }
 
 
+
+
+
+
+
     exibirLineChart(): void {
       const el = document.getElementById('line_chart');
       const chart = new google.visualization.LineChart(el);
+
+      var options = {
+        
+          'title': 'Box Office Earnings in First Two Weeks of Opening',
+          
+       'curveType': 'function',
+        
+        'width': 1300,
+        'height': 800 
+      };
+
+
+
+      const data = new google.visualization.DataTable();
+
+      data.addColumn('string','CR');
+      data.addColumn('number','numero do CR');
+
+      //teste
+      var arrays = ['Semestre', 'Semestre'];
+
+
+      
+      //for em todo array
+      //colocar 1,1 no array
+      
+
+
+
+      data.addRows(this.dados);
+
      
-      chart.draw(this.obterDataTable(), this.obterOpcoes());
+
+
+
+
+      
+     
+      chart.draw(data,options);
     }
+
+
+
+
+
+
+
+
+
+
 
     exibirCollumnChart(): void {
       const el = document.getElementById('column_chart');
@@ -91,11 +143,26 @@ export class DashboardComponent implements OnInit {
     }
 
     obterDataTable(): any {
+      
       const data = new google.visualization.DataTable();
 
-      data.addColumn('string','Mes');
-      data.addColumn('number','Quantidade');
+      data.addColumn('string','CR');
+      data.addColumn('number','numero do CR');
+
+      //teste
+      var arrays = ['Semestre', 'Semestre'];
+
+
+      
+      //for em todo array
+      //colocar 1,1 no array
+      
+
+
+
       data.addRows(this.dados);
+
+     
 
       return data;
     }
@@ -103,8 +170,8 @@ export class DashboardComponent implements OnInit {
     obterOpcoes(): any {
       return {
         'title': 'Quantidade de cadastro do primeiro semestre',
-        'width': 400,
-        'height': 300
+        'width': 1200,
+        'height': 400
       }
     }
 

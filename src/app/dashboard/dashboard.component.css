@@ -1,3 +1,20 @@
 div {
 	float: left;
 }
+
+.content{
+	background-color: oldlace;
+	padding: 30px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.conteiner{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}

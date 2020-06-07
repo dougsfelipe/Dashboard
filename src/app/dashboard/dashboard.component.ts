@@ -76,18 +76,20 @@ export class DashboardComponent implements OnInit {
     var options = {
 
       title: 'Evolução da Coeficiente de Rendimento do Estudante durante o Curso',
-      width: 1000,
-      height: 500,
+      'width': 1060,
+      'height': 520,
       vAxis: {
         ticks: [2, 4, 6, 8, 10]
-      }
+      },
+      chartArea: {width: '90%', height: '80%'},
+      legend: {'position': 'bottom'}
 
     };
 
     const data = new google.visualization.DataTable();
 
     data.addColumn('string', 'Coenficiente de Rendimento');
-    data.addColumn('number', 'CR ');
+    data.addColumn('number', 'Coenficiente de Rendimento ');
     data.addRows(this.evolucaoCR);
 
     chart.draw(data, options);
@@ -104,11 +106,13 @@ export class DashboardComponent implements OnInit {
     var options = {
 
       title: 'Evolução da Media geral do Estudante durante o Curso',
-      width: 1000,
-      height: 800,
+      'width': 1060,
+      'height': 520,
       vAxis: {
         ticks: [2, 4, 6, 8, 10]
-      }
+      },
+      chartArea: {width: '90%', height: '80%'},
+      legend: {'position': 'bottom'}
     };
 
 
@@ -132,9 +136,12 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      'title': 'Comparações entre aprovações e reprovações do aluno durante o curso',
-      'width': 1000,
-      'height': 800
+      title: 'Comparações entre aprovações e reprovações do aluno durante o curso',
+      width: 500,
+      height: 350,
+      chartArea: {width: '60%', height: '50%'},
+      
+      colors: ['lightgreen','aquamarine','red','pink',]
     };
 
     const data = new google.visualization.DataTable();
@@ -157,10 +164,12 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      'title': 'Comparação entre disciplinas cursadas e dispensadas',
-      'width': 1000,
-      'height': 800,
-      'pieHole': 0.3
+      title: 'Comparações entre aprovações e reprovações do aluno durante o curso',
+      width: 500,
+      height: 350,
+      chartArea: {width: '60%', height: '50%'},
+      
+      colors: ['lightgreen','aquamarine','red','pink',]
 
     };
 
@@ -197,8 +206,10 @@ export class DashboardComponent implements OnInit {
 
         ticks: [2, 4, 6, 8, 10]
       },
-      'width': 1000,
-      'height': 800
+      chartArea: {width: '90%', height: '80%'},
+      'width': 1060,
+      'height': 520,
+      legend: {'position': 'bottom'}
     };
 
     var chart = new google.visualization.AreaChart(document.getElementById('test'));

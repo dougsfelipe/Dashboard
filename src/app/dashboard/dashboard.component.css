@@ -2,19 +2,76 @@ div {
 	float: left;
 }
 
-.content{
-	background-color: oldlace;
-	padding: 30px;
-	border: 2px solid lightgray;
-	border-radius: 5px;
-	display: flex;
-	margin-bottom: 30px;
-}
-
 .conteiner{
-	width: 100%;
+	width: 100vw;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	
+}
+
+.row{
+	justify-content: center;
+	
+}
+
+.row1100{
+	display: flex;
+	justify-content: space-between;
+	width: 1100px;
+}
+
+
+
+.content{
+	background-color: oldlace;
+	padding: 3px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	margin-bottom: 40px;
+	display: flex;
+	width: 530px;
+
+}
+
+.contentlarge{
+	background-color: oldlace;
+	padding: 3px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	margin-bottom: 40px;
+	display: flex;
+	width: 1100px;
+
+}
+
+.test{
+	margin-left: 2.5vw;
+
+
+}
+
+
+
+
+.cards{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	flex: auto;
+	flex-wrap: wrap;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.card{
+	width: 23%;
+	height: 140px;
+	background-color: white;
+	border-top: 4px solid lightgreen;
+	border-radius: 8px;
+	display: flex;
+	
 }

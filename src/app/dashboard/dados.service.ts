@@ -51,13 +51,13 @@ export class DadosService {
       ['Obrigatorias Dispensadas', 2],
     ],
     aprovacoesPorMatriculas: [
-      ['2016.2', 7.70, 1],
-      ['2017.1', 5.78, 4],
-      ['2017.2', 6.48, 4],
-      ['2018.1', 4.81, 4],
-      ['2018.2', 7.11, 5],
-      ['2019.1', 7.40, 7],
-      ['2019.2', 5.88, 8],
+      ['2016.2', 7.70, 1.0],
+      ['2017.1', 5.78, 4.1],
+      ['2017.2', 6.48, 4.1],
+      ['2018.1', 4.81, 4.1],
+      ['2018.2', 7.11, 4.1],
+      ['2019.1', 7.40, 4.1],
+      ['2019.2', 5.88, 4.1],
     ],
     timelineCurso: [
       [ '2016.2', 'Primeiro Periodo', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
@@ -77,24 +77,16 @@ export class DadosService {
 
 
 
-  readonly dataAsArray = [
-
-
-    this.testedados.forEach(element => {
-      this.testedados.map(value => value.semestres[0].CR);
-    })
-
-    //this.testedados.map(value => value.semestres[0].CR),
-  ];
+  
 
 
   constructor() { }
 
   obterDados(): Observable<any> {
     return new Observable(observable => {
-      observable.next(this.obj);
+      observable.next(this.data);
       observable.complete();
-      console.log(this.obj.dados1);
+      console.log(this.data.aprovacaoes);
     });
   }
 

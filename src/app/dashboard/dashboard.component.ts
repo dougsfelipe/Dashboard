@@ -55,13 +55,13 @@ export class DashboardComponent implements OnInit {
   //Metodo para exibir os gráficos
   exibirGraficos(): void {
     this.exibirPieChart();
-    
+
 
     this.exibirLineChart();
     this.exibirCollumnChart();
     this.exibirDonutChart();
     this.exibirAreaChart();
-    
+
   }
 
 
@@ -75,15 +75,19 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      'title': 'Evolução da CR geral',
-      'width': 1000,
-      'height': 500
+      title: 'Evolução da Coeficiente de Rendimento do Estudante durante o Curso',
+      width: 1000,
+      height: 500,
+      vAxis: {
+        ticks: [2, 4, 6, 8, 10]
+      }
+
     };
 
     const data = new google.visualization.DataTable();
 
-    data.addColumn('string', 'CR');
-    data.addColumn('number', 'numero do CR');
+    data.addColumn('string', 'Coenficiente de Rendimento');
+    data.addColumn('number', 'CR ');
     data.addRows(this.evolucaoCR);
 
     chart.draw(data, options);
@@ -99,16 +103,19 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      'title': 'Evolução da media geral',
-      'width': 1000,
-      'height': 800
+      title: 'Evolução da Media geral do Estudante durante o Curso',
+      width: 1000,
+      height: 800,
+      vAxis: {
+        ticks: [2, 4, 6, 8, 10]
+      }
     };
 
 
 
     const data = new google.visualization.DataTable();
 
-    data.addColumn('string', 'CR');
+    data.addColumn('string', 'Media Geral');
     data.addColumn('number', 'Media Geral');
     data.addRows(this.evolucaoMediaGeral);
 
@@ -125,14 +132,14 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      'title': 'Aprovações e Reprovações',
+      'title': 'Comparações entre aprovações e reprovações do aluno durante o curso',
       'width': 1000,
       'height': 800
     };
 
     const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Trablho');
-    data.addColumn('number', 'Media Geral');
+    data.addColumn('string', 'Tipo');
+    data.addColumn('number', 'Quantidade');
 
 
     data.addRows(this.aprovacaoes);
@@ -143,23 +150,24 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  // Grafico de Donut - Aprovações e Reprovações
+  // Grafico de Donut - Cursadas e Dispensadas
   exibirDonutChart(): void {
     const el = document.getElementById('pie_chart2');
     const chart = new google.visualization.PieChart(el);
 
     var options = {
 
-      'title': 'Aprovações e Reprovações',
+      'title': 'Comparação entre disciplinas cursadas e dispensadas',
       'width': 1000,
       'height': 800,
-      'pieHole' : 0.3
+      'pieHole': 0.3
+
     };
 
     const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Trablho');
-    data.addColumn('number', 'Media Geral');
-    
+    data.addColumn('string', 'Disciplina');
+    data.addColumn('number', 'Quantidade');
+
 
     data.addRows(this.cursadasEdispensadas);
 
@@ -172,19 +180,23 @@ export class DashboardComponent implements OnInit {
   //Area Chart - Matriculas por Discipinhas aprovadas
 
   exibirAreaChart(): void {
-    
+
     const data = new google.visualization.DataTable();
-  
-    data.addColumn('string', 'Numero');
-    data.addColumn('number', 'Media Geral');
-    data.addColumn('number', 'Media Geral');
+
+    data.addColumn('string', 'Semestre');
+    data.addColumn('number', 'Matriculada');
+    data.addColumn('number', 'Cursada');
 
     data.addRows(this.aprovacoesPorMatriculas);
 
     var options = {
-      title: 'Company Performance',
+      title: 'Quantidade de disciplinas matriculas x Disciplinas Aprovadas durante o curso',
       hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
-      vAxis: { minValue: 0 },
+      vAxis: {
+        minValue: 0,
+
+        ticks: [2, 4, 6, 8, 10]
+      },
       'width': 1000,
       'height': 800
     };

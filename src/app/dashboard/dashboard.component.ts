@@ -81,7 +81,10 @@ export class DashboardComponent implements OnInit {
         ticks: [2, 4, 6, 8, 10]
       },
       chartArea: {width: '90%', height: '70%'},
-      legend: {'position': 'bottom'}
+      legend: {'position': 'bottom'},
+      colors: ['#4e73df'],
+      curveType: 'function',
+      pointSize: 10,
 
     };
 
@@ -110,6 +113,9 @@ export class DashboardComponent implements OnInit {
       vAxis: {
         ticks: [2, 4, 6, 8, 10]
       },
+      colors: ['#4e73df'],
+      ry: 50,
+      rx: 10,
       chartArea: {width: '90%', height: '70%'},
       legend: {'position': 'bottom'}
     };
@@ -135,22 +141,18 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      
       width: 520,
       height: 350,
       chartArea: {width: '80%', height: '80%'},
-      
-      colors: ['lightgreen','aquamarine','red','pink',]
+      colors: ['#1cc88a','#36b9cc','#f6c23e','#e74a3b'],
+      legend: {'position':'right','alignment':'center'},
     };
 
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Tipo');
     data.addColumn('number', 'Quantidade');
 
-
     data.addRows(this.aprovacaoes);
-
-
 
     chart.draw(data, options);
   }
@@ -163,23 +165,20 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      
+      pieHole: 0.6,
       width: 520,
       height: 350,
       chartArea: {width: '80%', height: '80%'},
+      colors: ['#1cc88a','#36b9cc','#4e73df','#f6c23e'],
+      legend: {'position':'right','alignment':'center'},
       
-      colors: ['lightgreen','aquamarine','red','pink',]
-
     };
 
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Disciplina');
     data.addColumn('number', 'Quantidade');
 
-
     data.addRows(this.cursadasEdispensadas);
-
-
 
     chart.draw(data, options);
   }
@@ -193,21 +192,26 @@ export class DashboardComponent implements OnInit {
 
     data.addColumn('string', 'Semestre');
     data.addColumn('number', 'Matriculada');
-    data.addColumn('number', 'Cursada');
+    data.addColumn('number', 'Aprovadas');
 
     data.addRows(this.aprovacoesPorMatriculas);
 
     var options = {
       
-      hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+      hAxis: { 
+               titleTextStyle: { color: '#333' },
+               
+              }  ,
+              
       vAxis: {
         minValue: 0,
-
-        ticks: [2, 4, 6, 8, 10]
+        ticks: [2, 4, 6, 8, 10],
+      
       },
       chartArea: {width: '80%', height: '80%'},
       'width': 1090,
       'height': 520,
+      colors: ['#1cc88a','#e74a3b'],
       legend: {'position': 'bottom'}
     };
 

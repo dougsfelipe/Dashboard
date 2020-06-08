@@ -75,13 +75,12 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      title: 'Evolução da Coeficiente de Rendimento do Estudante durante o Curso',
-      'width': 1060,
+      'width': 1090,
       'height': 520,
       vAxis: {
         ticks: [2, 4, 6, 8, 10]
       },
-      chartArea: {width: '90%', height: '80%'},
+      chartArea: {width: '90%', height: '70%'},
       legend: {'position': 'bottom'}
 
     };
@@ -105,13 +104,13 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      title: 'Evolução da Media geral do Estudante durante o Curso',
-      'width': 1060,
+      
+      'width': 1090,
       'height': 520,
       vAxis: {
         ticks: [2, 4, 6, 8, 10]
       },
-      chartArea: {width: '90%', height: '80%'},
+      chartArea: {width: '90%', height: '70%'},
       legend: {'position': 'bottom'}
     };
 
@@ -136,10 +135,10 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      title: 'Comparações entre aprovações e reprovações do aluno durante o curso',
-      width: 500,
+      
+      width: 520,
       height: 350,
-      chartArea: {width: '60%', height: '50%'},
+      chartArea: {width: '80%', height: '80%'},
       
       colors: ['lightgreen','aquamarine','red','pink',]
     };
@@ -164,10 +163,10 @@ export class DashboardComponent implements OnInit {
 
     var options = {
 
-      title: 'Comparações entre aprovações e reprovações do aluno durante o curso',
-      width: 500,
+      
+      width: 520,
       height: 350,
-      chartArea: {width: '60%', height: '50%'},
+      chartArea: {width: '80%', height: '80%'},
       
       colors: ['lightgreen','aquamarine','red','pink',]
 
@@ -199,20 +198,20 @@ export class DashboardComponent implements OnInit {
     data.addRows(this.aprovacoesPorMatriculas);
 
     var options = {
-      title: 'Quantidade de disciplinas matriculas x Disciplinas Aprovadas durante o curso',
+      
       hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
       vAxis: {
         minValue: 0,
 
         ticks: [2, 4, 6, 8, 10]
       },
-      chartArea: {width: '90%', height: '80%'},
-      'width': 1060,
+      chartArea: {width: '80%', height: '80%'},
+      'width': 1090,
       'height': 520,
       legend: {'position': 'bottom'}
     };
 
-    var chart = new google.visualization.AreaChart(document.getElementById('test'));
+    var chart = new google.visualization.AreaChart(document.getElementById('areaChart'));
     chart.draw(data, options);
   }
 

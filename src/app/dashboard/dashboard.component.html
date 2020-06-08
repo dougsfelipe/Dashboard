@@ -1,69 +1,147 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="
+display: flex;
+flex-direction: column;
+">
+
+
+    <div class="title justify-content-center">
+        DASHBOARD DE ACOMPANHAMENTO DO ALUNO
+    </div>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Sobre</a>
+            <a class="nav-item nav-link" href="#">Gerar Relatorio</a>
+
         </div>
     </div>
 </nav>
 
 
+<div class="dashboard">
 
-<div class="row" style="width: 100%;">
+    <div class="row" style="width: 100%;">
 
-     <div class="col-8 justify-content-center" >
-        <div class="cards"  >
-            <div class="card">
-                CR
-            </div>
-            <div class="card">
-                Media
-            </div>
-            <div class="card">
-                Porcetagem
-            </div>
-            <div class="card">
-                Faltas
+        <div class="col-10 justify-content-center">
+            <div class="cards">
+                <div class="card">
+                    <div class="titulo">
+                        Coeficiente de rendimento Geral
+                    </div>
+
+                    <div class="row justify-content-lg-between">
+                        <div class="subtitulo">
+                            6.44
+                        </div>
+                        <img src="assets/mortarboard.svg" class="icon" alt="">
+                    </div>
+
+                </div>
+                <div class="card" id="green">
+                    <div class="titulo">
+                        Disciplinas Obrigatórias Cursadas
+                    </div>
+
+                    <div class="row justify-content-lg-between">
+                        <div class="subtitulo">
+                            77.71%
+                        </div>
+                        <img src="assets/grade.svg" class="icon" alt="">
+                    </div>
+                </div>
+                <div class="card" id="blue">
+                    <div class="titulo">
+                        Disciplinas Eletivas de Perfil Cursadas
+                    </div>
+
+                    <div class="row justify-content-lg-between">
+                        <div class="subtitulo">
+                            10%
+                        </div>
+                        <img src="assets/brain.svg" class="icon" alt="">
+                    </div>
+                </div>
+                <div class="card" id="yellow">
+                    <div class="titulo">
+                        Disciplinas Eletivas Livre Cursadas
+                    </div>
+
+                    <div class="row justify-content-lg-between">
+                        <div class="subtitulo">
+                            100%
+                        </div>
+                        <img src="assets/book.svg" class="icon" alt="">
+                    </div>
+                </div>
             </div>
         </div>
+
+
     </div>
 
 
-</div>
+    <div class="conteiner col-12">
 
 
-<div class="row">
+        <div class="row">
 
-    <div class="row1100">
-        <div class="content">
-            <div id="pie_chart"></div>
+            <div class="content">
+                <div class="titulo-grafico">
+                    Comparações entre aprovações e reprovações do aluno durante o curso
+                </div>
+                <div class="grafico">
+                    <div id="pie_chart"></div>
+                </div>
+
+            </div>
+
+            <div class="content">
+
+                <div class="titulo-grafico">
+                    Comparações entre Disciplinas Eletivas e Obrigatorias Cursadas
+                </div>
+                <div id="pie_chart2"></div>
+            </div>
+
         </div>
 
-        <div class="content test">
-            <div id="pie_chart2"></div>
+
+
+        <div class="row">
+            <div class="contentlarge">
+                <div class="titulo-grafico">
+                    Evolução da Coeficiente de Rendimento do Estudante durante o Curso
+                </div>
+                <div id="line_chart"></div>
+            </div>
+
+            <div class="contentlarge">
+                <div class="titulo-grafico">
+                    Evolução da Media geral do Estudante durante o Curso
+                </div>
+                <div id="column_chart"></div>
+            </div>
+
+
+            <div class="contentlarge">
+                <div class="titulo-grafico">
+                    Quantidade de disciplinas matriculas x Disciplinas Aprovadas durante o curs
+                </div>
+                <div id="areaChart"></div>
+            </div>
+
         </div>
+
+
     </div>
 
-
-    <div class="contentlarge">
-        <div id="line_chart"></div>
-    </div>
-
-    <div class="contentlarge">
-        <div id="column_chart"></div>
-    </div>
-
-
-    <div class="contentlarge">
-        <div id="test"></div>
-    </div>
 
 
 

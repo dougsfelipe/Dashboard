@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { DadosService } from './dados.service';
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 declare var google: any;
 
@@ -215,8 +218,70 @@ export class DashboardComponent implements OnInit {
       legend: {'position': 'bottom'}
     };
 
-    var chart = new google.visualization.AreaChart(document.getElementById('areaChart'));
-    chart.draw(data, options);
+    var chart1 = new google.visualization.AreaChart(document.getElementById('areaChart'));
+    chart1.draw(data, options);
+
+
+// Teste Chord
+
+/* Imports */
+
+
+/* Chart code */
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+
+
+let chart = am4core.create("chartdiv", am4charts.ChordDiagram);
+
+
+chart.data = [
+    { from: "A", to: "D", value: 10 },
+    { from: "B", to: "D", value: 8 },
+    { from: "B", to: "E", value: 4 },
+    { from: "B", to: "C", value: 2 },
+    { from: "C", to: "E", value: 14 },
+    { from: "E", to: "D", value: 8 },
+    { from: "C", to: "A", value: 4 },
+    { from: "G", to: "A", value: 7 },
+    { from: "D", to: "B", value: 1 }
+];
+
+chart.dataFields.fromName = "from";
+chart.dataFields.toName = "to";
+chart.dataFields.value = "value";
+
+// make nodes draggable
+let nodeTemplate = chart.nodes.template;
+nodeTemplate.readerTitle = "Click to show/hide or drag to rearrange";
+nodeTemplate.showSystemTooltip = true;
+
+let nodeLink = chart.links.template;
+let bullet = nodeLink.bullets.push(new am4charts.CircleBullet());
+bullet.fillOpacity = 1;
+bullet.circle.radius = 5;
+bullet.locationX = 0.5;
+
+// create animations
+chart.events.on("ready", function() {
+    for (var i = 0; i < chart.links.length; i++) {
+        let link = chart.links.getIndex(i);
+        let bullet = link.bullets.getIndex(0);
+
+        animateBullet(bullet);
+    }
+})
+
+function animateBullet(bullet) {
+    let duration = 3000 * Math.random() + 2000;
+    let animation = bullet.animate([{ property: "locationX", from: 0, to: 1 }], duration)
+    animation.events.on("animationended", function(event) {
+        animateBullet(event.target.object);
+    })
+}
+
   }
 
 

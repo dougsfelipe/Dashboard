@@ -38,7 +38,8 @@ export class DadosService {
     ],
     aprovacaoes: [
       ['Aprovações por Média', 21],
-      ['Aprovações na final', 6],
+      ['Aprovações na final', 6
+    ],
       ['Reprovações', 4],
       ['Reprovações por falta', 1],
     ],

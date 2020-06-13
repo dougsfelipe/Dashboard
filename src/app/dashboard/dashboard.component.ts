@@ -5,284 +5,433 @@ import { DadosService } from './dados.service';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
 
 declare var google: any;
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+   selector: 'app-dashboard',
+   templateUrl: './dashboard.component.html',
+   styleUrls: ['./dashboard.component.css']
 })
 
 //Start
 
 export class DashboardComponent implements OnInit {
 
-  //Declaração de Variaveis dos dados
-  evolucaoCR: any;
-  evolucaoMediaGeral: any;
-  aprovacaoes: any;
-  cursadasEdispensadas: any;
-  aprovacoesPorMatriculas: any;
-  timelineCurso: any;
+   //Declaração de Variaveis dos dados
+   evolucaoCR: any;
+   evolucaoMediaGeral: any;
+   aprovacaoes: any;
+   cursadasEdispensadas: any;
+   aprovacoesPorMatriculas: any;
+   timelineCurso: any;
 
-  constructor(private dadosService: DadosService) { }
+   constructor(private dadosService: DadosService) { }
 
-  //Inicio da atriubuição dos dados
-  ngOnInit(): void {
-    this.dadosService.obterDados().subscribe(
-      dados => {
+   //Inicio da atriubuição dos dados
+   ngOnInit(): void {
+      this.dadosService.obterDados().subscribe(
+         dados => {
 
-        this.evolucaoCR = dados.evolucaoCR;
-        this.evolucaoMediaGeral = dados.evolucaoMediaGeral;
-        this.aprovacaoes = dados.aprovacaoes;
-        this.cursadasEdispensadas = dados.cursadasEdispensadas;
-        this.aprovacoesPorMatriculas = dados.aprovacoesPorMatriculas;
-        this.timelineCurso = dados.timelineCurso;
+            this.evolucaoCR = dados.evolucaoCR;
+            this.evolucaoMediaGeral = dados.evolucaoMediaGeral;
+            this.aprovacaoes = dados.aprovacaoes;
+            this.cursadasEdispensadas = dados.cursadasEdispensadas;
+            this.aprovacoesPorMatriculas = dados.aprovacoesPorMatriculas;
+            this.timelineCurso = dados.timelineCurso;
 
-        this.init();
-      });
-  }
+            this.init();
+         });
+   }
 
 
-  init(): void {
-    if (typeof (google) !== 'undefined') {
-      google.charts.load('current', { 'packages': ['corechart'] });
-      setTimeout(() => {
-        google.charts.setOnLoadCallback(this.exibirGraficos());
-      }, 1000);
-    }
-  }
+   init(): void {
+      if (typeof (google) !== 'undefined') {
+         google.charts.load('current', { 'packages': ['corechart'] });
+         setTimeout(() => {
+            google.charts.setOnLoadCallback(this.exibirGraficos());
+         }, 1000);
+      }
+   }
 
 
-  //Metodo para exibir os gráficos
-  exibirGraficos(): void {
-    this.exibirPieChart();
+   //Metodo para exibir os gráficos
+   exibirGraficos(): void {
+      this.exibirPieChart();
 
 
-    this.exibirLineChart();
-    this.exibirCollumnChart();
-    this.exibirDonutChart();
-    this.exibirAreaChart();
+      this.exibirLineChart();
+      this.exibirCollumnChart();
+      this.exibirDonutChart();
+      this.exibirAreaChart();
 
-  }
+   }
 
 
-  // Grafico de Linha
+   // Grafico de Linha
 
 
-  exibirLineChart(): void {
-    const el = document.getElementById('line_chart');
-    const chart = new google.visualization.LineChart(el);
+   exibirLineChart(): void {
+      const el = document.getElementById('line_chart');
+      const chart = new google.visualization.LineChart(el);
 
 
-    var options = {
+      var options = {
 
-      'width': 1090,
-      'height': 520,
-      vAxis: {
-        ticks: [2, 4, 6, 8, 10]
-      },
-      chartArea: {width: '90%', height: '70%'},
-      legend: {'position': 'bottom'},
-      colors: ['#4e73df'],
-      curveType: 'function',
-      pointSize: 10,
+         'width': 1090,
+         'height': 520,
+         vAxis: {
+            ticks: [2, 4, 6, 8, 10]
+         },
+         chartArea: { width: '90%', height: '70%' },
+         legend: { 'position': 'bottom' },
+         colors: ['#4e73df'],
+         curveType: 'function',
+         pointSize: 10,
 
-    };
+      };
 
-    const data = new google.visualization.DataTable();
+      const data = new google.visualization.DataTable();
 
-    data.addColumn('string', 'Coenficiente de Rendimento');
-    data.addColumn('number', 'Coenficiente de Rendimento ');
-    data.addRows(this.evolucaoCR);
+      data.addColumn('string', 'Coenficiente de Rendimento');
+      data.addColumn('number', 'Coenficiente de Rendimento ');
+      data.addRows(this.evolucaoCR);
 
-    chart.draw(data, options);
-  }
+      chart.draw(data, options);
+   }
 
 
 
-  //Grafico de barra - evoulação da media geral
+   //Grafico de barra - evoulação da media geral
 
-  exibirCollumnChart(): void {
-    const el = document.getElementById('column_chart');
-    const chart = new google.visualization.ColumnChart(el);
+   exibirCollumnChart(): void {
+      const el = document.getElementById('column_chart');
+      const chart = new google.visualization.ColumnChart(el);
 
-    var options = {
+      var options = {
 
-      
-      'width': 1090,
-      'height': 520,
-      vAxis: {
-        ticks: [2, 4, 6, 8, 10]
-      },
-      colors: ['#4e73df'],
-      ry: 50,
-      rx: 10,
-      chartArea: {width: '90%', height: '70%'},
-      legend: {'position': 'bottom'}
-    };
 
+         'width': 1090,
+         'height': 520,
+         vAxis: {
+            ticks: [2, 4, 6, 8, 10]
+         },
+         colors: ['#4e73df'],
+         ry: 50,
+         rx: 10,
+         chartArea: { width: '90%', height: '70%' },
+         legend: { 'position': 'bottom' }
+      };
 
 
-    const data = new google.visualization.DataTable();
 
-    data.addColumn('string', 'Media Geral');
-    data.addColumn('number', 'Media Geral');
-    data.addRows(this.evolucaoMediaGeral);
+      const data = new google.visualization.DataTable();
 
+      data.addColumn('string', 'Media Geral');
+      data.addColumn('number', 'Media Geral');
+      data.addRows(this.evolucaoMediaGeral);
 
-    chart.draw(data, options);
-  }
 
+      chart.draw(data, options);
+   }
 
 
-  // Grafico de Pizza - Aprovações e Reprovações
-  exibirPieChart(): void {
-    const el = document.getElementById('pie_chart');
-    const chart = new google.visualization.PieChart(el);
 
-    var options = {
+   // Grafico de Pizza - Aprovações e Reprovações
+   exibirPieChart(): void {
+      const el = document.getElementById('pie_chart');
+      const chart = new google.visualization.PieChart(el);
 
-      width: 520,
-      height: 350,
-      chartArea: {width: '80%', height: '80%'},
-      colors: ['#1cc88a','#36b9cc','#f6c23e','#e74a3b'],
-      legend: {'position':'right','alignment':'center'},
-    };
+      var options = {
 
-    const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Tipo');
-    data.addColumn('number', 'Quantidade');
+         width: 520,
+         height: 350,
+         chartArea: { width: '80%', height: '80%' },
+         colors: ['#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b'],
+         legend: { 'position': 'right', 'alignment': 'center' },
+      };
 
-    data.addRows(this.aprovacaoes);
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Tipo');
+      data.addColumn('number', 'Quantidade');
 
-    chart.draw(data, options);
-  }
+      data.addRows(this.aprovacaoes);
 
+      chart.draw(data, options);
+   }
 
-  // Grafico de Donut - Cursadas e Dispensadas
-  exibirDonutChart(): void {
-    const el = document.getElementById('pie_chart2');
-    const chart = new google.visualization.PieChart(el);
 
-    var options = {
+   // Grafico de Donut - Cursadas e Dispensadas
+   exibirDonutChart(): void {
+      const el = document.getElementById('pie_chart2');
+      const chart = new google.visualization.PieChart(el);
 
-      pieHole: 0.6,
-      width: 520,
-      height: 350,
-      chartArea: {width: '80%', height: '80%'},
-      colors: ['#1cc88a','#36b9cc','#4e73df','#f6c23e'],
-      legend: {'position':'right','alignment':'center'},
-      
-    };
+      var options = {
 
-    const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Disciplina');
-    data.addColumn('number', 'Quantidade');
+         pieHole: 0.6,
+         width: 520,
+         height: 350,
+         chartArea: { width: '80%', height: '80%' },
+         colors: ['#1cc88a', '#36b9cc', '#4e73df', '#f6c23e'],
+         legend: { 'position': 'right', 'alignment': 'center' },
 
-    data.addRows(this.cursadasEdispensadas);
+      };
 
-    chart.draw(data, options);
-  }
+      const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Disciplina');
+      data.addColumn('number', 'Quantidade');
 
+      data.addRows(this.cursadasEdispensadas);
 
-  //Area Chart - Matriculas por Discipinhas aprovadas
+      chart.draw(data, options);
+   }
 
-  exibirAreaChart(): void {
 
-    const data = new google.visualization.DataTable();
+   //Area Chart - Matriculas por Discipinhas aprovadas
 
-    data.addColumn('string', 'Semestre');
-    data.addColumn('number', 'Matriculada');
-    data.addColumn('number', 'Aprovadas');
+   exibirAreaChart(): void {
 
-    data.addRows(this.aprovacoesPorMatriculas);
+      const data = new google.visualization.DataTable();
 
-    var options = {
-      
-      hAxis: { 
-               titleTextStyle: { color: '#333' },
-               
-              }  ,
-              
-      vAxis: {
-        minValue: 0,
-        ticks: [2, 4, 6, 8, 10],
-      
-      },
-      chartArea: {width: '80%', height: '80%'},
-      'width': 1090,
-      'height': 520,
-      colors: ['#1cc88a','#e74a3b'],
-      legend: {'position': 'bottom'}
-    };
+      data.addColumn('string', 'Semestre');
+      data.addColumn('number', 'Matriculada');
+      data.addColumn('number', 'Aprovadas');
 
-    var chart1 = new google.visualization.AreaChart(document.getElementById('areaChart'));
-    chart1.draw(data, options);
+      data.addRows(this.aprovacoesPorMatriculas);
 
+      var options = {
 
-// Teste Chord
+         hAxis: {
+            titleTextStyle: { color: '#333' },
 
-/* Imports */
+         },
 
+         vAxis: {
+            minValue: 0,
+            ticks: [2, 4, 6, 8, 10],
 
-/* Chart code */
-// Themes begin
-am4core.useTheme(am4themes_animated);
-// Themes end
-
-
-
-let chart = am4core.create("chartdiv", am4charts.ChordDiagram);
-
-
-chart.data = [
-    { from: "A", to: "D", value: 10 },
-    { from: "B", to: "D", value: 8 },
-    { from: "B", to: "E", value: 4 },
-    { from: "B", to: "C", value: 2 },
-    { from: "C", to: "E", value: 14 },
-    { from: "E", to: "D", value: 8 },
-    { from: "C", to: "A", value: 4 },
-    { from: "G", to: "A", value: 7 },
-    { from: "D", to: "B", value: 1 }
-];
-
-chart.dataFields.fromName = "from";
-chart.dataFields.toName = "to";
-chart.dataFields.value = "value";
-
-// make nodes draggable
-let nodeTemplate = chart.nodes.template;
-nodeTemplate.readerTitle = "Click to show/hide or drag to rearrange";
-nodeTemplate.showSystemTooltip = true;
-
-let nodeLink = chart.links.template;
-let bullet = nodeLink.bullets.push(new am4charts.CircleBullet());
-bullet.fillOpacity = 1;
-bullet.circle.radius = 5;
-bullet.locationX = 0.5;
-
-// create animations
-chart.events.on("ready", function() {
-    for (var i = 0; i < chart.links.length; i++) {
-        let link = chart.links.getIndex(i);
-        let bullet = link.bullets.getIndex(0);
-
-        animateBullet(bullet);
-    }
-})
-
-function animateBullet(bullet) {
-    let duration = 3000 * Math.random() + 2000;
-    let animation = bullet.animate([{ property: "locationX", from: 0, to: 1 }], duration)
-    animation.events.on("animationended", function(event) {
-        animateBullet(event.target.object);
-    })
-}
-
-  }
+         },
+         chartArea: { width: '80%', height: '80%' },
+         'width': 1090,
+         'height': 520,
+         colors: ['#1cc88a', '#e74a3b'],
+         legend: { 'position': 'bottom' }
+      };
+
+      var chart1 = new google.visualization.AreaChart(document.getElementById('areaChart'));
+      chart1.draw(data, options);
+
+
+     
+
+
+
+      //testeNttworkGraph
+
+      /* Chart code */
+      // Themes begin
+      am4core.useTheme(am4themes_animated);
+      // Themes end
+
+      let chart = am4core.create("linetest", am4plugins_forceDirected.ForceDirectedTree);
+
+      let networkSeries = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
+      networkSeries.dataFields.linkWith = "linkWith";
+      networkSeries.dataFields.name = "name";
+      networkSeries.dataFields.id = "name";
+      networkSeries.dataFields.value = "value";
+      networkSeries.dataFields.children = "children";
+
+      networkSeries.nodes.template.label.text = "{name}"
+      networkSeries.fontSize = 8;
+      networkSeries.linkWithStrength = 0;
+
+      let nodeTemplate = networkSeries.nodes.template;
+      nodeTemplate.tooltipText = "{name}";
+      nodeTemplate.fillOpacity = 1;
+      nodeTemplate.label.hideOversized = true;
+      nodeTemplate.label.truncate = true;
+
+      let linkTemplate = networkSeries.links.template;
+      linkTemplate.strokeWidth = 1;
+      let linkHoverState = linkTemplate.states.create("hover");
+      linkHoverState.properties.strokeOpacity = 1;
+      linkHoverState.properties.strokeWidth = 2;
+
+      nodeTemplate.events.on("over", function (event) {
+         let dataItem = event.target.dataItem;
+         dataItem.childLinks.each(function (link) {
+            link.isHover = true;
+         })
+      })
+
+      nodeTemplate.events.on("out", function (event) {
+         let dataItem = event.target.dataItem;
+         dataItem.childLinks.each(function (link) {
+            link.isHover = false;
+         })
+      })
+
+      networkSeries.data = [
+         {
+            "name": "Primeiro Semestre",
+            "value": 7.88,
+            "children": [
+               {
+                  "name": "Introdução a Computação",
+                  "value": 14
+               },
+               {
+                  "name": "Introdução a Progamação",
+                  "value": 1
+               },
+               {
+                  "name": "Matemática Discreta",
+                  "value": 1
+               },
+               {
+                  "name": "Calculo 1",
+                  "value": 2
+               },
+               {
+                  "name": "Algebra Linear e Vetorial",
+                  "value": 5
+               }
+            ]
+         },
+         {
+            "name": "Segundo Semestre",
+            "value": 7.41,
+            "children": [
+               {
+                  "name": "Algoritmos e Estruturas de dados",
+                  "value": 14
+               },
+               {
+                  "name": "Lógica para Computação",
+                  "value": 1
+               },
+               {
+                  "name": "Sistemas Digitais",
+                  "value": 1
+               },
+               {
+                  "name": "Estatistica e Probalidade para computação",
+                  "value": 2
+               }
+            ]
+         },
+         {
+            "name": "Terceiro Semestre",
+            "value": 6.63,
+            "children": [
+               {
+                  "name": "Infraestrutura de Comunicação",
+                  "value": 14
+               },
+               {
+                  "name": "Infraestrutura de Software",
+                  "value": 1
+               },
+               {
+                  "name": "Infraestrutura de Hardware",
+                  "value": 1
+               },
+               {
+                  "name": "Inglês para computação",
+                  "value": 2
+               },
+               {
+                  "name": "Informática e Sociedade",
+                  "value": 5
+               }
+            ]
+         },
+         {
+            "name": "Quarto Semestre",
+            "value": 5.63,
+            "children": [
+               {
+                  "name": "Interface Usuario Maquina",
+                  "value": 14
+               },
+               {
+                  "name": "Engenharia de Software e Sistemas",
+                  "value": 1
+               },
+               {
+                  "name": "Sistemas Inteligentes",
+                  "value": 1
+               },
+               {
+                  "name": "Gerenciamento de Dados e Informações",
+                  "value": 2
+               },
+               {
+                  "name": "Informatica Teorica",
+                  "value": 5
+               },
+               {
+                  "name": "Processamento Gráfico",
+                  "value": 5
+               }
+            ]
+         },
+
+         {
+            "name": "Quinto Semestre",
+            "value": 7.12,
+            "children": [
+               {
+                  "name": "Projetão",
+                  "value": 14
+               },
+               {
+                  "name": "Paradigmas de Linguaguens Computacionais",
+                  "value": 1
+               },
+               {
+                  "name": "Compiladores",
+                  "value": 1
+               },
+               {
+                  "name": "Historia e Futuro da Computação",
+                  "value": 2
+               },
+               {
+                  "name": "Introdução a Multimidia",
+                  "value": 5
+               },
+               {
+                  "name": "Metodologia Expressão Tec-Cientifica ",
+                  "value": 5
+               }
+            ]
+         },
+
+         {
+            "name": "Eletivas",
+            "value": 500,
+            "children": [
+               {
+                  "name": "Jogos Digitais 2D",
+                  "value": 14
+               },
+               {
+                  "name": "Progamação 2",
+                  "value": 1
+               }            
+            ]
+         },
+      ];
+
+
+
+
+
+
+   }
 
 
 

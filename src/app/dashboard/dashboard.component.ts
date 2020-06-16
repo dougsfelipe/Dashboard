@@ -280,151 +280,151 @@ export class DashboardComponent implements OnInit {
       networkSeries.data = [
          {
             "name": "Primeiro Semestre",
-            "value": 3.94,
+            "value": 7.88,
             "children": [
                {
                   "name": "Introdução a Computação",
-                  "value": 5
+                  "value": 10
                },
                {
                   "name": "Introdução a Progamação",
-                  "value": 4.405
+                  "value": 8.81
                },
                {
                   "name": "Matemática Discreta",
-                  "value": 3.51
+                  "value": 7.02
                },
                {
                   "name": "Calculo 1",
-                  "value": 3.205
+                  "value": 6.41
                },
                {
                   "name": "Algebra Linear e Vetorial",
-                  "value": 3.575
+                  "value": 7.15
                }
             ]
          },
          {
             "name": "Segundo Semestre",
-            "value": 4.21875,
+            "value": 8.45,
             "children": [
                {
                   "name": "Algoritmos e Estruturas de dados",
-                  "value": 3.505
+                  "value": 7.01
                },
                {
                   "name": "Lógica para Computação",
-                  "value": 3.78
+                  "value": 7.56
                },
                {
                   "name": "Sistemas Digitais",
-                  "value": 4.78
+                  "value": 9.56
                },
                {
                   "name": "Estatistica e Probalidade para computação",
-                  "value": 4.81
+                  "value": 9.62
                }
             ]
          },
          {
             "name": "Terceiro Semestre",
-            "value": 4.082,
+            "value": 8.05,
             "children": [
                {
                   "name": "Infraestrutura de Comunicação",
-                  "value": 3.985
+                  "value": 7.97
                },
                {
                   "name": "Infraestrutura de Software",
-                  "value": 4.5
+                  "value": 9
                },
                {
                   "name": "Infraestrutura de Hardware",
-                  "value": 3.5
+                  "value": 7
                },
                {
                   "name": "Inglês para computação",
-                  "value": 3.8
+                  "value": 7.6
                },
                {
                   "name": "Informática e Sociedade",
-                  "value": 4.625
+                  "value": 9.25
                }
             ]
          },
          {
             "name": "Quarto Semestre",
-            "value": 3.415,
+            "value": 6.83,
             "children": [
                {
                   "name": "Interface Usuario Maquina",
-                  "value": 4
+                  "value": 8
                },
                {
                   "name": "Engenharia de Software e Sistemas",
-                  "value": 2.875
+                  "value": 5.75
                },
                {
                   "name": "Sistemas Inteligentes",
-                  "value": 4
+                  "value": 8
                },
                {
                   "name": "Gerenciamento de Dados e Informações",
-                  "value": 3.05
+                  "value": 6.1
                },
                {
                   "name": "Informatica Teorica",
-                  "value": 3.09
+                  "value": 6.18
                },
                {
                   "name": "Processamento Gráfico",
-                  "value": 3.5
+                  "value": 7
                }
             ]
          },
 
          {
             "name": "Quinto Semestre",
-            "value": 3.915,
+            "value": 7.83,
             "children": [
                {
                   "name": "Projetão",
-                  "value": 5
+                  "value": 10
                },
                {
                   "name": "Paradigmas de Linguaguens Computacionais",
-                  "value": 2.95
+                  "value": 5.9
                },
                {
                   "name": "Compiladores",
-                  "value": 3.17
+                  "value": 6.34
                },
                {
                   "name": "Historia e Futuro da Computação",
-                  "value": 5
+                  "value": 7.75
                },
                {
                   "name": "Introdução a Multimidia",
-                  "value": 3.875
+                  "value": 7.75
                },
                {
                   "name": "Metodologia Expressão Tec-Cientifica ",
-                  "value": 3.5
+                  "value": 7
                }
             ]
          },
 
          {
             "name": "Eletivas",
-            "value": 5,
+            "value": 10,
             "children": [
                {
                   "name": "Jogos Digitais 2D",
-                  "value": 5
+                  "value": 10
                },
                {
                   "name": "Progamação 2",
-                  "value": 5
+                  "value": 10
                }            
             ]
          },

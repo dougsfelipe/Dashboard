@@ -30,7 +30,7 @@ div {
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	margin-bottom: 40px;
-	
+	padding: 0;
 	width: 530px;
 	box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
 	
@@ -43,7 +43,7 @@ div {
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	margin-bottom: 40px;
-	
+	padding: 0;
 	width: 1100px;
 	box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
 	
@@ -137,6 +137,7 @@ box-shadow: 0px 9px 33px -20px rgba(0,0,0,0.75);
     margin-top: 20px;
 	font-family: 'Nunito', sans-serif;
 	color:grey;
+	
 }
 
 .subtitulo{
@@ -177,6 +178,13 @@ box-shadow: 0px 9px 33px -20px rgba(0,0,0,0.75);
 	margin-top: 15px;
 	color: grey;
 	font-size: 16px;
+	width: 100%;
+	padding: 10px 20px;
+	background-color: #f5f5f5;
+	color:#4e73df;
+	margin: 0;
+	font-weight: bold;
+	border-bottom: 1px solid lightgray;
 }
 
 .grafico{

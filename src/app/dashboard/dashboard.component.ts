@@ -212,7 +212,7 @@ export class DashboardComponent implements OnInit {
             ticks: [2, 4, 6, 8, 10],
 
          },
-         chartArea: { width: '80%', height: '80%' },
+         chartArea: { width: '90%', height: '70%' },
          'width': 1090,
          'height': 520,
          colors: ['#1cc88a', '#e74a3b'],
@@ -242,13 +242,16 @@ export class DashboardComponent implements OnInit {
       networkSeries.dataFields.id = "name";
       networkSeries.dataFields.value = "value";
       networkSeries.dataFields.children = "children";
+      networkSeries.maxRadius = 35;
 
       networkSeries.nodes.template.label.text = "{name}"
       networkSeries.fontSize = 8;
       networkSeries.linkWithStrength = 0;
 
       let nodeTemplate = networkSeries.nodes.template;
-      nodeTemplate.tooltipText = "{name}";
+      nodeTemplate.tooltipText = `{name}
+      Nota: {value}`;
+      
       nodeTemplate.fillOpacity = 1;
       nodeTemplate.label.hideOversized = true;
       nodeTemplate.label.truncate = true;
@@ -258,6 +261,7 @@ export class DashboardComponent implements OnInit {
       let linkHoverState = linkTemplate.states.create("hover");
       linkHoverState.properties.strokeOpacity = 1;
       linkHoverState.properties.strokeWidth = 2;
+
 
       nodeTemplate.events.on("over", function (event) {
          let dataItem = event.target.dataItem;
@@ -276,151 +280,151 @@ export class DashboardComponent implements OnInit {
       networkSeries.data = [
          {
             "name": "Primeiro Semestre",
-            "value": 7.88,
+            "value": 3.94,
             "children": [
                {
                   "name": "Introdução a Computação",
-                  "value": 14
+                  "value": 5
                },
                {
                   "name": "Introdução a Progamação",
-                  "value": 1
+                  "value": 4.405
                },
                {
                   "name": "Matemática Discreta",
-                  "value": 1
+                  "value": 3.51
                },
                {
                   "name": "Calculo 1",
-                  "value": 2
+                  "value": 3.205
                },
                {
                   "name": "Algebra Linear e Vetorial",
-                  "value": 5
+                  "value": 3.575
                }
             ]
          },
          {
             "name": "Segundo Semestre",
-            "value": 7.41,
+            "value": 4.21875,
             "children": [
                {
                   "name": "Algoritmos e Estruturas de dados",
-                  "value": 14
+                  "value": 3.505
                },
                {
                   "name": "Lógica para Computação",
-                  "value": 1
+                  "value": 3.78
                },
                {
                   "name": "Sistemas Digitais",
-                  "value": 1
+                  "value": 4.78
                },
                {
                   "name": "Estatistica e Probalidade para computação",
-                  "value": 2
+                  "value": 4.81
                }
             ]
          },
          {
             "name": "Terceiro Semestre",
-            "value": 6.63,
+            "value": 4.082,
             "children": [
                {
                   "name": "Infraestrutura de Comunicação",
-                  "value": 14
+                  "value": 3.985
                },
                {
                   "name": "Infraestrutura de Software",
-                  "value": 1
+                  "value": 4.5
                },
                {
                   "name": "Infraestrutura de Hardware",
-                  "value": 1
+                  "value": 3.5
                },
                {
                   "name": "Inglês para computação",
-                  "value": 2
+                  "value": 3.8
                },
                {
                   "name": "Informática e Sociedade",
-                  "value": 5
+                  "value": 4.625
                }
             ]
          },
          {
             "name": "Quarto Semestre",
-            "value": 5.63,
+            "value": 3.415,
             "children": [
                {
                   "name": "Interface Usuario Maquina",
-                  "value": 14
+                  "value": 4
                },
                {
                   "name": "Engenharia de Software e Sistemas",
-                  "value": 1
+                  "value": 2.875
                },
                {
                   "name": "Sistemas Inteligentes",
-                  "value": 1
+                  "value": 4
                },
                {
                   "name": "Gerenciamento de Dados e Informações",
-                  "value": 2
+                  "value": 3.05
                },
                {
                   "name": "Informatica Teorica",
-                  "value": 5
+                  "value": 3.09
                },
                {
                   "name": "Processamento Gráfico",
-                  "value": 5
+                  "value": 3.5
                }
             ]
          },
 
          {
             "name": "Quinto Semestre",
-            "value": 7.12,
+            "value": 3.915,
             "children": [
                {
                   "name": "Projetão",
-                  "value": 14
+                  "value": 5
                },
                {
                   "name": "Paradigmas de Linguaguens Computacionais",
-                  "value": 1
+                  "value": 2.95
                },
                {
                   "name": "Compiladores",
-                  "value": 1
+                  "value": 3.17
                },
                {
                   "name": "Historia e Futuro da Computação",
-                  "value": 2
+                  "value": 5
                },
                {
                   "name": "Introdução a Multimidia",
-                  "value": 5
+                  "value": 3.875
                },
                {
                   "name": "Metodologia Expressão Tec-Cientifica ",
-                  "value": 5
+                  "value": 3.5
                }
             ]
          },
 
          {
             "name": "Eletivas",
-            "value": 500,
+            "value": 5,
             "children": [
                {
                   "name": "Jogos Digitais 2D",
-                  "value": 14
+                  "value": 5
                },
                {
                   "name": "Progamação 2",
-                  "value": 1
+                  "value": 5
                }            
             ]
          },

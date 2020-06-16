@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "preinstall":   "npm install -g http-server",
-    "postinstall":  "npm run build:ssr"
+    "postinstall":  "npm run build"
   },
   "private": true,
   "dependencies": {
